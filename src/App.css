@@ -1,38 +1,288 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background: linear-gradient(135deg, #F4512C, #5E1B89);
+  color: white;
+  font-family: 'Lato', sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Scrollbar Styles */
+
+.app-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.app-container::-webkit-scrollbar-track {
+  background: #F8FFFE;
+  border-radius: 20px;
+}
+
+.app-container::-webkit-scrollbar-thumb {
+  background: #FF7F4D;
+  border-radius: 20px;
+}
+
+.app-container {
+  background: white;
+  border-radius: 9px;
+  padding: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 1000px; /* Increased width */
+  max-height: 80vh;
+  min-height: 600px; /* Ensures consistent height */
+  overflow-y: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} 
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  color: #5E1B89;
+}
+
+.input-group input {
+  border-radius: 10px;
+  border: 1px solid #5E1B89;
+  width: 100%; /* Increased input width */
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #F4512C, #FF7F4D);
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+.btn-add:hover {
+  background: #FF7F4D;
+}
+
+.btn-filter, .btn-active {
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.btn-active {
+  background: #5E1B89;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-active:hover {
+  background: #7A3EAD;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-filter {
+  background: #9D71BC;
+  color: white;
+}
+
+.btn-filter:hover {
+  background: #7A3EAD;
+}
+
+.task-item {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Makes sure tasks use full width */
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-item div {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-complete, .btn-delete {
+  background: #5E1B89;
+  color: white;
+  border-radius: 10px;
+  width: 80px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease;
+} 
+
+.btn-complete:hover {
+  background: #7A3EAD;
+}
+
+.btn-delete {
+  background: #dc3545;
+}
+
+.btn-delete:hover {
+  background: #ff0019;
+}
+
+.thin-header {
+  width: 100%;
+  height: 2px; /* Thin line */
+  background: #FF7F4D;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 20px; /* Adds spacing below the header */
+}
+
+.task-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensures content takes full width */
+}
+
+.due-date {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: 50px;
+}
+
+.thin-header {
+  width: 100%;
+  height: 2px; /* Thin line */
+  background: #FF7F4D;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 20px; /* Adds spacing below the header */
+}
+
+/* Tooltip Container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip Text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+/* Show Tooltip on Hover */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Add this to your existing CSS */
+.form-check-input {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.btn-delete-selected {
+  background: #dc3545;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 15px;
+  transition: background 0.3s ease;
+}
+
+.btn-delete-selected:hover {
+  background: #ff0019;
+}
+
+/* Add this to your existing CSS */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn-add {
+  margin-right: 10px; /* Adds spacing between the buttons */
+}
+
+/* Add this to your existing CSS */
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.btn-add {
+  margin-right: 10px; /* Adds spacing between the buttons */
+}
+
+/* Add this to your existing CSS */
+.d-flex.gap-2 {
+  gap: 10px; /* Adds spacing between buttons */
+}
+
+.btn-primary {
+  background: #5E1B89;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #7A3EAD;
+}
+
+.btn-danger {
+  background: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #ff0019;
+}
+
+.btn-danger:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+/* Add this to your existing CSS */
+.task-item input[type="checkbox"] {
+  margin-right: 15px; /* Added spacing for the checkbox */
+}
+
+.btn-success {
+  background: #FF7F4D;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #F4512C;
+}
+
+.btn-success:disabled {
+  background: #888;
+  cursor: not-allowed;
 }
